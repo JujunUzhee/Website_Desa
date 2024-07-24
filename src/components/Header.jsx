@@ -1,213 +1,155 @@
-import './Header.css'
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
+    const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
+    const [isInformasiDropdownOpen, setInformasiDropdownOpen] = useState(false);
+    const [isDemografisDropdownOpen, setDemografisDropdownOpen] = useState(false);
+    const [isKatalogDropdownOpen, setKatalogDropdownOpen] = useState(false);
+
+    const profileRef = useRef(null);
+    const informasiRef = useRef(null);
+    const demografisRef = useRef(null);
+    const katalogRef = useRef(null);
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (profileRef.current && !profileRef.current.contains(event.target)) {
+                setProfileDropdownOpen(false);
+            }
+            if (informasiRef.current && !informasiRef.current.contains(event.target)) {
+                setInformasiDropdownOpen(false);
+            }
+            if (demografisRef.current && !demografisRef.current.contains(event.target)) {
+                setDemografisDropdownOpen(false);
+            }
+            if (katalogRef.current && !katalogRef.current.contains(event.target)) {
+                setKatalogDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-light shadow-sm bg-white">
-                <div className="container-fluid">
-                    <div className="navbar-brand">
-                        <img id="logo-ri" src="/static/img/ri.png" width='50px'height='50px' alt="" />
-                        <span id='desa'>
-                                Desa
-                            </span>
-                        <span id='rdr' className="navbar-brand">
-                                Kabupaten Bangkalan
-                            </span>
+        <nav className="bg-white shadow-sm">
+            <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center">
+                        <img id="logo-ri" src="/static/img/logo_majalengka.jpeg" alt="logo" className="w-9 h-9 ml-10" />
+                        <span id="desa" className="ml-4 -mt-2">Desa Margajaya</span>
                     </div>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon" />
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto me-5 mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link to='/' className='nav-link' >Home</Link>
-                            </li>
+                    <div className="hidden md:flex items-center space-x-4">
+                        <Link to="/" className="nav-link">Home</Link>
 
-                            {/* profil */}
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Profile
-                                </a>
-                                <ul className="dropdown-menu shadow-sm border-light" aria-labelledby="navbarDropdown">
+                        {/* Profile Dropdown */}
+                        <div className="relative" ref={profileRef}>
+                            <button
+                                onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
+                                className="nav-link"
+                            >
+                                Profile
+                            </button>
+                            {isProfileDropdownOpen && (
+                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <Link className="dropdown-item" to='/profile'>
-                                            sejarah
-                                        </Link>
+                                        <Link className="dropdown-item" to="/profile">Sejarah</Link>
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            visi & Misi
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Visi & Misi</Link>
                                     </li>
                                 </ul>
-                            </li>
-                            {/*  */}
+                            )}
+                        </div>
 
-
-                            {/* informasi */}
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Informasi
-                                </a>
-                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {/* Informasi Dropdown */}
+                        <div className="relative" ref={informasiRef}>
+                            <button
+                                onClick={() => setInformasiDropdownOpen(!isInformasiDropdownOpen)}
+                                className="nav-link"
+                            >
+                                Informasi
+                            </button>
+                            {isInformasiDropdownOpen && (
+                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Berita
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Berita</Link>
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Agenda
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Agenda</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Produk Hukum
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Produk Hukum</Link>
                                     </li>
                                     <li>
-                                        <a className='dropdown-item' href="#">
-                                            Informasi Publik
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Informasi Publik</Link>
                                     </li>
                                 </ul>
-                            </li>
+                            )}
+                        </div>
 
-                            {/*  */}
-
-
-                            {/* demografis */}
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Demografis
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {/* Demografis Dropdown */}
+                        <div className="relative" ref={demografisRef}>
+                            <button
+                                onClick={() => setDemografisDropdownOpen(!isDemografisDropdownOpen)}
+                                className="nav-link"
+                            >
+                                Demografis
+                            </button>
+                            {isDemografisDropdownOpen && (
+                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Administrasi
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Administrasi</Link>
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Penduduk
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Penduduk</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            wilayah
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Wilayah</Link>
                                     </li>
                                 </ul>
-                            </li>
-                            {/*  */}
+                            )}
+                        </div>
 
-                            {/* Media */}
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Media
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {/* Katalog Dropdown */}
+                        <div className="relative" ref={katalogRef}>
+                            <button
+                                onClick={() => setKatalogDropdownOpen(!isKatalogDropdownOpen)}
+                                className="nav-link"
+                            >
+                                Katalog
+                            </button>
+                            {isKatalogDropdownOpen && (
+                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Galery foto
-                                        </a>
+                                        <Link className="dropdown-item" to="/wisata">Gallery Wisata</Link>
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Galery video
-                                        </a>
+                                        <Link className="dropdown-item" to="#">Gallery Desa</Link>
                                     </li>
                                 </ul>
-                            </li>
-                            {/*  */}
-
-                            {/* Publikasi */}
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Publikasi
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Pembangunan Desa
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Dana Desa
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            {/*  */}
+                            )}
+                        </div>
 
 
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">
-                                    Lapak
-                                </a>
-                            </li>
-
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">
-                                    Covid
-                                </a>
-                            </li>
-
-                        </ul>
+                    </div>
+                    <div className="md:hidden flex items-center">
+                        <button className="navbar-toggler">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
                     </div>
                 </div>
-            </nav>
-        </>
+            </div>
+        </nav>
     );
 }
