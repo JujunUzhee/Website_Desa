@@ -6,12 +6,12 @@ export default function Header() {
     const [isInformasiDropdownOpen, setInformasiDropdownOpen] = useState(false);
     const [isDemografisDropdownOpen, setDemografisDropdownOpen] = useState(false);
     const [isKatalogDropdownOpen, setKatalogDropdownOpen] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const profileRef = useRef(null);
     const informasiRef = useRef(null);
     const demografisRef = useRef(null);
     const katalogRef = useRef(null);
-
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -140,15 +140,109 @@ export default function Header() {
                                 </ul>
                             )}
                         </div>
-
-
                     </div>
                     <div className="md:hidden flex items-center">
-                        <button className="navbar-toggler">
+                        <button className="navbar-toggler" onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
                 </div>
+                {isMobileMenuOpen && (
+                    <div className="md:hidden">
+                        <Link to="/" className="block nav-link">Home</Link>
+
+                        <div className="relative">
+                            <button
+                                onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
+                                className="block nav-link"
+                            >
+                                Profile
+                            </button>
+                            {isProfileDropdownOpen && (
+                                <ul className="pl-4">
+                                    <li>
+                                        <Link className="dropdown-item" to="/profile">Sejarah</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Visi & Misi</Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
+
+                        <div className="relative">
+                            <button
+                                onClick={() => setInformasiDropdownOpen(!isInformasiDropdownOpen)}
+                                className="block nav-link"
+                            >
+                                Informasi
+                            </button>
+                            {isInformasiDropdownOpen && (
+                                <ul className="pl-4">
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Berita</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Agenda</Link>
+                                    </li>
+                                    <li>
+                                        <hr className="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Produk Hukum</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Informasi Publik</Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
+
+                        <div className="relative">
+                            <button
+                                onClick={() => setDemografisDropdownOpen(!isDemografisDropdownOpen)}
+                                className="block nav-link"
+                            >
+                                Demografis
+                            </button>
+                            {isDemografisDropdownOpen && (
+                                <ul className="pl-4">
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Administrasi</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Penduduk</Link>
+                                    </li>
+                                    <li>
+                                        <hr className="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Wilayah</Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
+
+                        <div className="relative">
+                            <button
+                                onClick={() => setKatalogDropdownOpen(!isKatalogDropdownOpen)}
+                                className="block nav-link"
+                            >
+                                Katalog
+                            </button>
+                            {isKatalogDropdownOpen && (
+                                <ul className="pl-4">
+                                    <li>
+                                        <Link className="dropdown-item" to="/wisata">Gallery Wisata</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="#">Gallery Desa</Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     );

@@ -100,7 +100,7 @@ const WisataDetail = () => {
                 <div className="mt-8">
                     <h2 className="text-2xl font-semibold mb-4">Video Vlog</h2>
                     <div className="flex justify-center">
-                        <div className="w-72 h-64">
+                        <div className="w-full h-64">
                             <ReactPlayer
                                 url={wisata.videoUrl}
                                 playing={isPlaying}

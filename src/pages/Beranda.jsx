@@ -11,7 +11,7 @@ export default function Beranda() {
                     <div className="col-md-6 col-sm-12 p-md-5 p-sm-2">
                         <h1 className='text-2xl font-bold'>Selamat Datang Di Desa Margajaya</h1>
                         <p>Margajaya merupakan sebuah desa yang terletak dalam (daerah) kecamatan Lemahsugih, Kabupaten Majalengka, Provinsi Jawa Barat, Indonesia.</p>
-                        <p>Poskod yang digunakan di Margajaya adalah 45465. Terdapat buah desa di dalam daerah kecamatan Lemahsugih.</p>
+                        <p>Kode Pos yang digunakan di Margajaya adalah 45465. Terdapat buah desa di dalam daerah kecamatan Lemahsugih.</p>
                         <p>Desa margajaya memiliki potensi ekonomi dan wisata yang besar dimana desa ini terkenal sebagai desa dengan produktifitas pertanian yang baik. Salah satu komitas unggulannya adalah padi dan sayuran.
 
                         </p>
