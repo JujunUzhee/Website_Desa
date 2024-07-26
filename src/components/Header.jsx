@@ -77,19 +77,16 @@ export default function Header() {
                             {isInformasiDropdownOpen && (
                                 <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <Link className="dropdown-item" to="#">Berita</Link>
+                                        <Link className="dropdown-item" to="/berita">Berita</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Agenda</Link>
+                                        <Link className="dropdown-item" to="/agenda">Agenda</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Produk Hukum</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="#">Informasi Publik</Link>
+                                        <Link className="dropdown-item" to="/informasi">Informasi Publik</Link>
                                     </li>
                                 </ul>
                             )}
@@ -106,10 +103,10 @@ export default function Header() {
                             {isDemografisDropdownOpen && (
                                 <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <Link className="dropdown-item" to="#">Administrasi</Link>
+                                        <Link className="dropdown-item" to="/administrasi">Administrasi</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Penduduk</Link>
+                                        <Link className="dropdown-item" to="/penduduk">Penduduk</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
@@ -133,9 +130,6 @@ export default function Header() {
                                 <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
                                         <Link className="dropdown-item" to="/wisata">Gallery Wisata</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="#">Gallery Desa</Link>
                                     </li>
                                 </ul>
                             )}
@@ -189,9 +183,6 @@ export default function Header() {
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Produk Hukum</Link>
-                                    </li>
-                                    <li>
                                         <Link className="dropdown-item" to="#">Informasi Publik</Link>
                                     </li>
                                 </ul>
@@ -234,9 +225,6 @@ export default function Header() {
                                 <ul className="pl-4">
                                     <li>
                                         <Link className="dropdown-item" to="/wisata">Gallery Wisata</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="#">Gallery Desa</Link>
                                     </li>
                                 </ul>
                             )}

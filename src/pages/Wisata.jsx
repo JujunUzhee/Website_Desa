@@ -1,7 +1,7 @@
 // Wisata.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import CardWisata from '../components/CardWisata';
+import CardWisata from '../components/Card/CardWisata';
 import Header from '../components/Header';
 import { wisataData } from '../data/wisataData';
 import ReactTypingEffect from 'react-typing-effect';

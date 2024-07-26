@@ -1,15 +1,15 @@
 import React from 'react';
-import InformasiComponents from '../components/InformasiComponents';
+import PendudukComponents from '../components/PendudukComponents';
 import App from "../layouts/App";
 
-const Informasi = () => {
+const Penduduk = () => {
     return (
         <App>
             <div className="p-4">
-                <InformasiComponents />
+                <PendudukComponents />
             </div>
         </App>
     )
 }
 
-export default Informasi;
+export default Penduduk;
