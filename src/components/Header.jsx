@@ -57,10 +57,10 @@ export default function Header() {
                             {isProfileDropdownOpen && (
                                 <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
                                     <li>
-                                        <Link className="dropdown-item" to="/profile">Sejarah</Link>
+                                        <Link className="dropdown-item" to="/sejarah">Sejarah</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Visi & Misi</Link>
+                                        <Link className="dropdown-item" to="/visi-misi">Visi & Misi</Link>
                                     </li>
                                 </ul>
                             )}
@@ -112,7 +112,7 @@ export default function Header() {
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Wilayah</Link>
+                                        <Link className="dropdown-item" to="/wilayah">Wilayah</Link>
                                     </li>
                                 </ul>
                             )}
@@ -158,7 +158,7 @@ export default function Header() {
                                         <Link className="dropdown-item" to="/profile">Sejarah</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Visi & Misi</Link>
+                                        <Link className="dropdown-item" to="/visi-misi">Visi & Misi</Link>
                                     </li>
                                 </ul>
                             )}
@@ -174,16 +174,16 @@ export default function Header() {
                             {isInformasiDropdownOpen && (
                                 <ul className="pl-4">
                                     <li>
-                                        <Link className="dropdown-item" to="#">Berita</Link>
+                                        <Link className="dropdown-item" to="/berita">Berita</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Agenda</Link>
+                                        <Link className="dropdown-item" to="/agenda">Agenda</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Informasi Publik</Link>
+                                        <Link className="dropdown-item" to="/informasi">Informasi Publik</Link>
                                     </li>
                                 </ul>
                             )}
@@ -199,16 +199,16 @@ export default function Header() {
                             {isDemografisDropdownOpen && (
                                 <ul className="pl-4">
                                     <li>
-                                        <Link className="dropdown-item" to="#">Administrasi</Link>
+                                        <Link className="dropdown-item" to="/administrasi">Administrasi</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Penduduk</Link>
+                                        <Link className="dropdown-item" to="/penduduk">Penduduk</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="#">Wilayah</Link>
+                                        <Link className="dropdown-item" to="/wilayah">Wilayah</Link>
                                     </li>
                                 </ul>
                             )}
