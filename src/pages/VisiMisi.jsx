@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 const VisiMisi = () => {
     return (
-        <div>
+        <div className='bg-white dark:bg-gray-900'>
             <Header />
             <VisiMisiComponents />
             <Footer />

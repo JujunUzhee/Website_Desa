@@ -1,14 +1,17 @@
 import React from 'react';
 import InformasiComponents from '../components/InformasiComponents';
-import App from "../layouts/App";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Informasi = () => {
     return (
-        <App>
+        <div className='bg-white dark:bg-gray-900'>
+            <Header />
             <div className="p-4">
                 <InformasiComponents />
             </div>
-        </App>
+            <Footer />
+        </div>
     )
 }
 

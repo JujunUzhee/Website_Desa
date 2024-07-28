@@ -14,7 +14,7 @@ const Wisata = () => {
     };
 
     return (
-        <>
+        <div className="bg-white dark:bg-gray-900">
             <Header />
             <div className="container mx-auto p-4">
                 <h5 className="text-3xl font-semibold mb-4 text-center">
@@ -32,7 +32,7 @@ const Wisata = () => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

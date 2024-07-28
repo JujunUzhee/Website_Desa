@@ -39,10 +39,10 @@ const WisataDetail = () => {
     return (
         <>
             <Header />
-            <div className="container mx-auto p-4">
+            <div className="container mx-auto p-4 bg-white dark:bg-gray-900">
                 <div className="bg-cover bg-center h-96" style={{ backgroundImage: `url(${wisata.imageUrl})` }}>
                     <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
-                        <h1 className="text-white text-5xl font-bold">{wisata.name}</h1>
+                        <h1 className="text-white md:text-5xl text-2xl  text-center font-bold">{wisata.name}</h1>
                     </div>
                 </div>
                 <div className="mt-8 flex flex-col md:flex-row">
@@ -74,7 +74,7 @@ const WisataDetail = () => {
                         centerMode={false} // Tidak menggunakan center mode
                     >
                         {wisata.imageUrls.map((url, index) => (
-                            <div key={index} className="flex-shrink-0 w-64">
+                            <div key={index} className="flex-shrink-0 md:w-64 w-80">
                                 <img src={url} alt={`${wisata.name} ${index + 1}`} className="w-full h-48 object-cover rounded-lg shadow-lg" />
                             </div>
                         ))}

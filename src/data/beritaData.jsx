@@ -18,6 +18,7 @@ export const beritaData = [
         author: "Petani Desa",
         date: "18 Juli 2024",
         description: "Musim panen telah tiba. Para petani desa bersiap untuk memanen padi dengan penuh semangat.",
-        imgSrc: "https://www.pexels.com/id-id/foto/orang-berjalan-di-tengah-lapangan-rumput-hijau-2165758/"
+        imgSrc: "https://images.pexels.com/photos/2165758/pexels-photo-2165758.jpeg"
     }
+
 ]

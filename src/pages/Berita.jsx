@@ -6,11 +6,11 @@ import Footer from '../components/Footer'
 
 const Berita = () => {
     return (
-        <>
+        <div className='bg-white dark:bg-gray-900'>
             <Header />
             <BeritaComponents />
             <Footer />
-        </>
+        </div>
     )
 }
 

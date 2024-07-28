@@ -1,14 +1,17 @@
 import React from 'react';
 import PendudukComponents from '../components/PendudukComponents';
-import App from "../layouts/App";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Penduduk = () => {
     return (
-        <App>
+        <div className='bg-white dark:bg-gray-900'>
+            <Header />
             <div className="p-4">
                 <PendudukComponents />
             </div>
-        </App>
+            <Footer />
+        </div>
     )
 }
 

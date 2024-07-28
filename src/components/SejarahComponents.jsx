@@ -4,7 +4,7 @@ const SejarahComponents = () => {
     return (
         <div className="p-6 bg-gray-100">
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-4xl font-bold mb-8">Sejarah Desa Kami</h1>
+                <h1 className="text-4xl font-bold mb-8 text-center">Sejarah Desa Kami</h1>
 
                 {/* Main Image and Description */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -26,34 +26,6 @@ const SejarahComponents = () => {
                     </div>
                 </div>
 
-                {/* Timeline Section */}
-                <h2 className="text-3xl font-bold mb-4">Garis Waktu</h2>
-                <div className="timeline mb-8">
-                    <div className="timeline-item mb-6 border-l-4 border-blue-500 pl-4">
-                        <h3 className="text-xl font-semibold">1900 - Didirikan</h3>
-                        <p>
-                            Desa ini didirikan oleh sekelompok keluarga yang memiliki tujuan untuk membangun komunitas yang harmonis.
-                        </p>
-                    </div>
-                    <div className="timeline-item mb-6 border-l-4 border-blue-500 pl-4">
-                        <h3 className="text-xl font-semibold">1950 - Pembangunan Pertama</h3>
-                        <p>
-                            Pembangunan infrastruktur pertama dilakukan, seperti jalan dan jembatan, yang meningkatkan konektivitas desa.
-                        </p>
-                    </div>
-                    <div className="timeline-item mb-6 border-l-4 border-blue-500 pl-4">
-                        <h3 className="text-xl font-semibold">2000 - Pengembangan Pendidikan</h3>
-                        <p>
-                            Dibangunnya sekolah dan pusat pelatihan keterampilan untuk meningkatkan kualitas pendidikan di desa.
-                        </p>
-                    </div>
-                    <div className="timeline-item mb-6 border-l-4 border-blue-500 pl-4">
-                        <h3 className="text-xl font-semibold">2020 - Desa Digital</h3>
-                        <p>
-                            Implementasi teknologi digital untuk mendukung kegiatan ekonomi dan sosial masyarakat desa.
-                        </p>
-                    </div>
-                </div>
 
                 {/* Key Events Accordion */}
                 <h2 className="text-3xl font-bold mb-4">Peristiwa Utama</h2>
