@@ -1,12 +1,15 @@
-import App from '../layouts/App'
+
 import { RiBriefcase2Fill, RiCommunityLine } from "react-icons/ri";
 import { FaBookMedical, FaMosque } from "react-icons/fa";
 import BeritaComponents from '../components/BeritaComponents';
+import Header from '../components/Header';
+import Footer from "../components/Footer";
 
 
 export default function Beranda() {
     return (
-        <App>
+        <>
+            <Header />
             <div className="container mx-auto py-4">
                 <div className="flex flex-col md:flex-row items-center bg-gray-100 rounded-3xl p-5">
                     <div className="md:w-1/2 p-5">
@@ -80,6 +83,7 @@ export default function Beranda() {
 
             {/* Berita */}
             <BeritaComponents />
-        </App>
+            <Footer />
+        </>
     );
 }

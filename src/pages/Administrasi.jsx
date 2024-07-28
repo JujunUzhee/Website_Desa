@@ -1,14 +1,14 @@
 import React from 'react';
 import AdministrasiComponents from '../components/AdministrasiComponents';
-import App from "../layouts/App";
+import Header from '../components/Header';
 
 const Administrasi = () => {
     return (
-        <App>
+        < ><Header />
             <div className="p-4">
                 <AdministrasiComponents />
             </div>
-        </App>
+        </>
     )
 }
 

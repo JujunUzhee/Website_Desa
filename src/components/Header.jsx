@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
     const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -12,6 +12,9 @@ export default function Header() {
     const informasiRef = useRef(null);
     const demografisRef = useRef(null);
     const katalogRef = useRef(null);
+    const mobileMenuRef = useRef(null);
+
+    const location = useLocation();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -27,6 +30,9 @@ export default function Header() {
             if (katalogRef.current && !katalogRef.current.contains(event.target)) {
                 setKatalogDropdownOpen(false);
             }
+            if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+                setMobileMenuOpen(false);
+            }
         };
 
         document.addEventListener('mousedown', handleClickOutside);
@@ -34,6 +40,23 @@ export default function Header() {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    useEffect(() => {
+        // Reset all states when the route changes
+        setProfileDropdownOpen(false);
+        setInformasiDropdownOpen(false);
+        setDemografisDropdownOpen(false);
+        setKatalogDropdownOpen(false);
+        setMobileMenuOpen(false);
+    }, [location]);
+
+    const handleDropdownClick = (setDropdownOpen) => {
+        setDropdownOpen(prev => !prev);
+    };
+
+    const handleMobileMenuLinkClick = () => {
+        setMobileMenuOpen(false);
+    };
 
     return (
         <nav className="bg-white shadow-sm">
@@ -49,13 +72,15 @@ export default function Header() {
                         {/* Profile Dropdown */}
                         <div className="relative" ref={profileRef}>
                             <button
-                                onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
+                                onClick={() => handleDropdownClick(setProfileDropdownOpen)}
                                 className="nav-link"
+                                aria-expanded={isProfileDropdownOpen}
+                                aria-controls="profile-dropdown"
                             >
                                 Profile
                             </button>
                             {isProfileDropdownOpen && (
-                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
+                                <ul id="profile-dropdown" className="absolute right-0 mt-2 w-48 bg-white shadow-lg z-50">
                                     <li>
                                         <Link className="dropdown-item" to="/sejarah">Sejarah</Link>
                                     </li>
@@ -69,24 +94,26 @@ export default function Header() {
                         {/* Informasi Dropdown */}
                         <div className="relative" ref={informasiRef}>
                             <button
-                                onClick={() => setInformasiDropdownOpen(!isInformasiDropdownOpen)}
+                                onClick={() => handleDropdownClick(setInformasiDropdownOpen)}
                                 className="nav-link"
+                                aria-expanded={isInformasiDropdownOpen}
+                                aria-controls="informasi-dropdown"
                             >
                                 Informasi
                             </button>
                             {isInformasiDropdownOpen && (
-                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
+                                <ul id="informasi-dropdown" className="absolute right-0 mt-2 w-48 bg-white shadow-lg z-50">
                                     <li>
-                                        <Link className="dropdown-item" to="/berita">Berita</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/berita">Berita</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="/agenda">Agenda</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/agenda">Agenda</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="/informasi">Informasi Publik</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/informasi">Informasi Publik</Link>
                                     </li>
                                 </ul>
                             )}
@@ -95,24 +122,26 @@ export default function Header() {
                         {/* Demografis Dropdown */}
                         <div className="relative" ref={demografisRef}>
                             <button
-                                onClick={() => setDemografisDropdownOpen(!isDemografisDropdownOpen)}
+                                onClick={() => handleDropdownClick(setDemografisDropdownOpen)}
                                 className="nav-link"
+                                aria-expanded={isDemografisDropdownOpen}
+                                aria-controls="demografis-dropdown"
                             >
                                 Demografis
                             </button>
                             {isDemografisDropdownOpen && (
-                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
+                                <ul id="demografis-dropdown" className="absolute right-0 mt-2 w-48 bg-white shadow-lg z-50">
                                     <li>
-                                        <Link className="dropdown-item" to="/administrasi">Administrasi</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/administrasi">Administrasi</Link>
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="/penduduk">Penduduk</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/penduduk">Penduduk</Link>
                                     </li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li>
-                                        <Link className="dropdown-item" to="/wilayah">Wilayah</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/wilayah">Wilayah</Link>
                                     </li>
                                 </ul>
                             )}
@@ -121,117 +150,82 @@ export default function Header() {
                         {/* Katalog Dropdown */}
                         <div className="relative" ref={katalogRef}>
                             <button
-                                onClick={() => setKatalogDropdownOpen(!isKatalogDropdownOpen)}
+                                onClick={() => handleDropdownClick(setKatalogDropdownOpen)}
                                 className="nav-link"
+                                aria-expanded={isKatalogDropdownOpen}
+                                aria-controls="katalog-dropdown"
                             >
                                 Katalog
                             </button>
                             {isKatalogDropdownOpen && (
-                                <ul className="absolute right-0 mt-2 w-48 bg-white shadow-lg">
+                                <ul id="katalog-dropdown" className="absolute right-0 mt-2 w-48 bg-white shadow-lg z-50">
                                     <li>
-                                        <Link className="dropdown-item" to="/wisata">Gallery Wisata</Link>
+                                        <Link className="dropdown-item w-full text-left" to="/wisata">Gallery Wisata</Link>
                                     </li>
                                 </ul>
                             )}
                         </div>
                     </div>
+
+                    {/* Mobile Menu Toggle */}
                     <div className="md:hidden flex items-center">
-                        <button className="navbar-toggler" onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
-                            <span className="navbar-toggler-icon"></span>
+                        <button
+                            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                            className="text-gray-500 focus:outline-none focus:text-gray-700"
+                            aria-expanded={isMobileMenuOpen}
+                            aria-controls="mobile-menu"
+                        >
+                            <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
                         </button>
                     </div>
                 </div>
-                {isMobileMenuOpen && (
-                    <div className="md:hidden">
-                        <Link to="/" className="block nav-link">Home</Link>
+            </div>
 
-                        <div className="relative">
-                            <button
-                                onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
-                                className="block nav-link"
-                            >
-                                Profile
-                            </button>
-                            {isProfileDropdownOpen && (
-                                <ul className="pl-4">
-                                    <li>
-                                        <Link className="dropdown-item" to="/profile">Sejarah</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/visi-misi">Visi & Misi</Link>
-                                    </li>
-                                </ul>
-                            )}
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-white shadow-lg" ref={mobileMenuRef}>
+                    <div id="mobile-menu" className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" onClick={handleMobileMenuLinkClick}>Home</Link>
+
+                        <div className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                            <span>Profile</span>
+                            <div className="pl-4 space-y-1">
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/sejarah" onClick={handleMobileMenuLinkClick}>Sejarah</Link>
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/visi-misi" onClick={handleMobileMenuLinkClick}>Visi & Misi</Link>
+                            </div>
                         </div>
 
-                        <div className="relative">
-                            <button
-                                onClick={() => setInformasiDropdownOpen(!isInformasiDropdownOpen)}
-                                className="block nav-link"
-                            >
-                                Informasi
-                            </button>
-                            {isInformasiDropdownOpen && (
-                                <ul className="pl-4">
-                                    <li>
-                                        <Link className="dropdown-item" to="/berita">Berita</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/agenda">Agenda</Link>
-                                    </li>
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/informasi">Informasi Publik</Link>
-                                    </li>
-                                </ul>
-                            )}
+                        <div className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                            <span>Informasi</span>
+                            <div className="pl-4 space-y-1">
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/berita" onClick={handleMobileMenuLinkClick}>Berita</Link>
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/agenda" onClick={handleMobileMenuLinkClick}>Agenda</Link>
+                                <hr className="border-t border-gray-200" />
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/informasi" onClick={handleMobileMenuLinkClick}>Informasi Publik</Link>
+                            </div>
                         </div>
 
-                        <div className="relative">
-                            <button
-                                onClick={() => setDemografisDropdownOpen(!isDemografisDropdownOpen)}
-                                className="block nav-link"
-                            >
-                                Demografis
-                            </button>
-                            {isDemografisDropdownOpen && (
-                                <ul className="pl-4">
-                                    <li>
-                                        <Link className="dropdown-item" to="/administrasi">Administrasi</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/penduduk">Penduduk</Link>
-                                    </li>
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/wilayah">Wilayah</Link>
-                                    </li>
-                                </ul>
-                            )}
+                        <div className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                            <span>Demografis</span>
+                            <div className="pl-4 space-y-1">
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/administrasi" onClick={handleMobileMenuLinkClick}>Administrasi</Link>
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/penduduk" onClick={handleMobileMenuLinkClick}>Penduduk</Link>
+                                <hr className="border-t border-gray-200" />
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/wilayah" onClick={handleMobileMenuLinkClick}>Wilayah</Link>
+                            </div>
                         </div>
 
-                        <div className="relative">
-                            <button
-                                onClick={() => setKatalogDropdownOpen(!isKatalogDropdownOpen)}
-                                className="block nav-link"
-                            >
-                                Katalog
-                            </button>
-                            {isKatalogDropdownOpen && (
-                                <ul className="pl-4">
-                                    <li>
-                                        <Link className="dropdown-item" to="/wisata">Gallery Wisata</Link>
-                                    </li>
-                                </ul>
-                            )}
+                        <div className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                            <span>Katalog</span>
+                            <div className="pl-4 space-y-1">
+                                <Link className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" to="/wisata" onClick={handleMobileMenuLinkClick}>Gallery Wisata</Link>
+                            </div>
                         </div>
                     </div>
-                )}
-            </div>
+                </div>
+            )}
         </nav>
     );
 }
