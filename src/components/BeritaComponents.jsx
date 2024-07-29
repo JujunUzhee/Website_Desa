@@ -7,7 +7,7 @@ const BeritaComponents = () => {
     return (
         <div>
             <div className="container mx-auto my-10">
-                <h2 className="text-2xl font-bold flex items-center gap-2">
+                <h2 className="text-3xl font-bold flex items-center gap-2">
                     <RiBookmark2Fill />
                     Berita Terbaru
                 </h2>

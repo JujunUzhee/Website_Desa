@@ -22,7 +22,7 @@ const CardWisata = ({ wisata }) => {
                 <p className='text-center'>{truncateText(wisata.description, 100)}</p>
                 <div className="card-actions w-full flex justify-center mt-4">
                     <button
-                        className="btn btn-info text-white w-1/2"
+                        className="btn btn-success text-white w-1/2"
                         onClick={(e) => {
                             e.preventDefault();
                             window.location.href = `/wisata/detail/${wisata.id}`;

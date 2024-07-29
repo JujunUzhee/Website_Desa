@@ -64,7 +64,7 @@ export default function Header() {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <img id="logo-ri" src="/static/img/logo_majalengka.jpeg" alt="logo" className="w-9 h-9 ml-10" />
-                        <span id="desa" className="ml-4 -mt-2">Desa Margajaya</span>
+                        <span id="desa" className="ml-4 -mt-2 font-semibold">Desa Margajaya</span>
                     </div>
                     <div className="hidden md:flex items-center space-x-4">
                         <Link to="/" className="nav-link">Home</Link>

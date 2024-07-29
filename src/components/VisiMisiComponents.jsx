@@ -1,13 +1,14 @@
 import React from 'react';
+import ReactTypingEffect from 'react-typing-effect';
 
 const VisiMisiComponents = () => {
     return (
         <div className="min-h-screen bg-gray-100 p-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-fadeIn">
-                        Visi dan Misi Desa
-                    </h1>
+                    <h5 className="text-3xl font-semibold mb-4 text-center">
+                        <ReactTypingEffect text="Visi dan Misi" />
+                    </h5>
                     <p className="text-lg md:text-xl text-gray-600">
                         Menyongsong masa depan dengan semangat dan komitmen
                     </p>
